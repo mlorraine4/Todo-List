@@ -119,7 +119,13 @@ const projectMain = (() => {
         var projectIndex = projects.indexOf(target) + 1;
         allProjects.splice(projectIndex, 1);
         Storage().save(allProjects);
+
+        var names = Storage().names();
+        names.splice(projectIndex, 1);
+        Storage().storeNames(names);
+
         projectDisplay.removeProject(projectIndex);
+        projectDisplay.displayCurrentProject(projectIndex-1, allProjects);
 
     };
     

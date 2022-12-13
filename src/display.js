@@ -4,6 +4,7 @@ import { calendar } from ".";
 import { Storage } from "./storage";
 
 const formDisplay = (() => {
+
     const openEditForm = () => {
         closeMainForm();
         document.querySelector('.editForm').style.display = "grid";
