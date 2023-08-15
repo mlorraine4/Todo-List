@@ -1,212 +1,299 @@
-
-import { sub } from "date-fns";
-import { calendar } from ".";
+import { calendar, handleDeleteProject, handleDeleteTask } from ".";
 import { Storage } from "./storage";
 
-const formDisplay = (() => {
+// Tasks
+export function displayTask(task) {
+  let taskContainer = document.createElement("div");
+  taskContainer.classList.add("taskContainer");
+  taskContainer.setAttribute("data-key", task.id);
 
-    const openEditForm = () => {
-        closeMainForm();
-        document.querySelector('.editForm').style.display = "grid";
-        document.querySelector('#cancelEdit').style.display = "block";
+  var newTitle = document.createElement("div");
+  newTitle.innerHTML = task.title;
+  newTitle.classList.add("listName");
+  var newDueDate = document.createElement("div");
+
+  if (task.dueDate === calendar.today) {
+    newDueDate.innerHTML = "today";
+  } else if (task.dueDate === calendar.tomorrow) {
+    newDueDate.innerHTML = "tomorrow";
+  } else {
+    newDueDate.innerHTML = task.dueDate;
+  }
+
+  newDueDate.classList.add("listDue");
+
+  if (task.priority === "low") {
+    newTitle.style.color = "blue";
+  }
+  if (task.priority === "high") {
+    newTitle.style.color = "red";
+  }
+
+  var edit = document.createElement("div");
+  edit.classList.add("edit");
+  edit.innerHTML = "...";
+
+  var remove = document.createElement("button");
+  remove.classList.add("deleteBtn");
+  remove.classList.add("hide");
+  remove.onclick = handleDeleteTask;
+  remove.innerHTML = "x";
+
+  taskContainer.append(newTitle, newDueDate, edit, remove);
+  taskContainer.onmouseenter = showDeleteBtn;
+  taskContainer.onmouseleave = hideDeleteBtn;
+  content.append(taskContainer);
+}
+
+export function displayAllTasks() {
+  let tasks = Object.values(Storage.myToDoList.allTasks);
+  tasks.sort(function (x, y) {
+    return x.timestamp - y.timestamp;
+  });
+  tasks.forEach((task) => {
+    displayTask(task);
+  });
+}
+
+export function removeTaskFromDisplay(id) {
+  let divs = document.querySelectorAll("[data-key]");
+  divs.forEach((div) => {
+    if (div.getAttribute("data-key") === id) {
+      div.remove();
     }
+  });
+}
 
-    const closeEditForm = () => {
-        document.querySelector('.editForm').reset();
-        document.querySelector('.editForm').style.display = "none";
-        document.querySelector('#cancelEdit').style.display = "none";
-    };
+function displayTodaysTasks() {
+  let tasks = Object.values(Storage.myToDoList.allTasks);
+  tasks.sort(function (x, y) {
+    return x.timestamp - y.timestamp;
+  });
+  tasks.forEach((task) => {
+    if (task.dueDate === calendar.today) {
+      displayTask(task);
+    }
+  });
+}
 
-    const openMainForm = () => {
-        closeEditForm();
-        document.querySelector('.formMain').style.display = "grid";
-        document.querySelector('#cancelMain').style.display = "block";
-    };
+function displayTomorrowsTasks() {
+  let tasks = Object.values(Storage.myToDoList.allTasks);
+  tasks.sort(function (x, y) {
+    return x.timestamp - y.timestamp;
+  });
+  tasks.forEach((task) => {
+    if (task.dueDate === calendar.tomorrow) {
+      displayTask(task);
+    }
+  });
+}
 
-    const closeMainForm = () => {
-        document.querySelector('.formMain').reset();
-        document.querySelector('.formMain').style.display = "none";
-        document.querySelector('#cancelMain').style.display = "none";
-    };
-    return {openEditForm, closeEditForm, openMainForm, closeMainForm};
-})();
+function displayImportantTasks() {
+  let tasks = Object.values(Storage.myToDoList.allTasks);
+  tasks.sort(function (x, y) {
+    return x.timestamp - y.timestamp;
+  });
+  tasks.forEach((task) => {
+    if (task.priority === "high") {
+      displayTask(task);
+    }
+  });
+}
 
-const todoDisplay = (() => {
-    var content = document.querySelector('.content');
+// PROJECTS
+export function displayProjectTasks(projName) {
+  let tasks = Object.values(Storage.myToDoList[projName]);
+  tasks.forEach((el) => {
+    displayTask(el);
+  })
+}
 
-    function displayNewTodo(title, dueDate, priority) {
-        var newTitle = document.createElement('div');
-        newTitle.innerHTML = title;
-        newTitle.classList.add('listName');
-        var newDueDate = document.createElement('div');
+export function displayAllProjectButtons() {
+  Object.keys(Storage.myToDoList).forEach((key) => {
+    if (key !== "allTasks") {
+      addProjectButton(key);
+    }
+  });
+}
 
-        if (dueDate === calendar.today) {newDueDate.innerHTML = "today"}
-        else if (dueDate === calendar.tomorrow) {newDueDate.innerHTML = "tomorrow"}
-        else {newDueDate.innerHTML = dueDate};
-    
-        newDueDate.classList.add('listDue');
-        
-        if (priority === 'low') { newTitle.style.color = "blue" };
-        if (priority === 'high') { newTitle.style.color = "red" };
+export function addProjectButton(projName) {
+  var navBar = document.querySelector(".navBar");
+  var projectBtnContainer = document.createElement("div");
+  projectBtnContainer.classList.add("projectTab");
+  projectBtnContainer.classList.add("navItem");
+  projectBtnContainer.innerHTML = projName;
+  var deleteBtn = document.createElement("div");
+  deleteBtn.innerHTML = "x";
+  deleteBtn.classList.add("deleteProject");
+  deleteBtn.classList.add("disappear");
+  deleteBtn.onclick = handleDeleteProject;
 
-        var edit = document.createElement('div');
-        edit.classList.add('edit');
-        edit.innerHTML = "...";
+  projectBtnContainer.onmouseenter = showDeleteProjBtn;
+  projectBtnContainer.onmouseleave = hideDeleteProjBtn;
 
-        content.append(newTitle, newDueDate, edit);
-        return {displayNewTodo};
-    };
+  projectBtnContainer.append(deleteBtn);
+  navBar.appendChild(projectBtnContainer);
 
-    function appendTaskHeader() {
-        var nameHeader = document.createElement('div');
-        nameHeader.innerHTML = "task";
-        nameHeader.classList.add('listName');
-        nameHeader.setAttribute('id', 'taskHeader');
-        var dueHead = document.createElement('div');
-        dueHead.innerHTML = "due";
-        dueHead.classList.add('listDue');
-        dueHead.setAttribute('id', 'dateHeader')
+  return projectBtnContainer;
+}
 
-        content.append(nameHeader, dueHead);
-    };
+const deleteProjectButton = () => {};
 
-    function updateDisplay(todo, index) {
-        var titleDivs = document.querySelectorAll(".listName");
-        titleDivs[index+1].innerHTML = todo.title;
-        var dueDateDivs = document.querySelectorAll(".listDue");
-        dueDateDivs[index+1].innerHTML = todo.dueDate;
-    };
+// Display selected navigation page.
+export function togglePage(navBar) {
+  console.log(navBar.innerHTML);
+  content.innerHTML = "";
+  let navItems = document.querySelectorAll(".navItem");
+  navItems.forEach((el) => {
+    el.classList.remove("active");
+  });
 
-    function removeDisplay(index) {
-        var titleDivs = document.querySelectorAll(".listName");
-        titleDivs[index+1].remove();
-        var dueDateDivs = document.querySelectorAll(".listDue");
-        dueDateDivs[index+1].remove();
-        var editDivs = Array.from(document.querySelectorAll('.edit'));
-        editDivs[index].remove();
+  if (navBar.innerHTML === "home") {
+    navBar.classList.add("active");
 
-        formDisplay.closeEditForm();
-        
-    };
+    var head = document.createElement("div");
+    head.classList.add("navBarHead");
+    var title = document.createElement("div");
+    title.classList.add("navBarTitle");
+    var subHead = document.createElement("div");
+    subHead.classList.add("subHead");
+    title.innerHTML = "Home";
+    subHead.innerHTML = calendar.today;
+    var addBtn = document.createElement("button");
+    addBtn.innerHTML = "+";
+    addBtn.classList.add("addBtns");
+    addBtn.onclick = openMainForm;
 
-    return { displayNewTodo, appendTaskHeader, updateDisplay, removeDisplay }
-})();
+    head.append(title, subHead, addBtn);
+    content.appendChild(head);
 
-const projectDisplay = (() => {
-    let projectNames = ["main"];
+    displayTaskHeader();
+    displayAllTasks();
+  } else if (navBar.innerHTML === "today") {
+    var head = document.createElement("div");
+    head.classList.add("navBarHead");
+    var title = document.createElement("div");
+    title.classList.add("navBarTitle");
+    var subHead = document.createElement("div");
+    subHead.classList.add("subHead");
+    title.innerHTML = "Today";
+    subHead.innerHTML = calendar.today;
 
-    if (!(window.localStorage.getItem("projectNames") === null)) {
-        var names = Storage().names();
-        projectNames = names;
-    } else {Storage().storeNames(projectNames)};
+    head.append(title, subHead);
+    document.querySelector(".content").appendChild(head);
 
-    const getName = () => {
-        var promptName = prompt('what is your new project name?', 'project');
-        projectNames.push(promptName);
-        console.log(projectNames);
-        Storage().storeNames(projectNames);
-        displayNewProject(promptName);
-    };
+    displayTaskHeader();
+    displayTodaysTasks();
+  } else if (navBar.innerHTML === "tomorrow") {
+    var head = document.createElement("div");
+    head.classList.add("navBarHead");
+    var title = document.createElement("div");
+    title.classList.add("navBarTitle");
+    var subHead = document.createElement("div");
+    subHead.classList.add("subHead");
+    title.innerHTML = "Tomorrow";
+    subHead.innerHTML = calendar.tomorrow;
 
-    const displayNewProject = (promptName) =>{
+    head.append(title, subHead);
+    document.querySelector(".content").appendChild(head);
 
+    displayTaskHeader();
+    displayTomorrowsTasks();
+  } else if (navBar.innerHTML === "important tasks") {
+    var title = document.createElement("div");
+    title.classList.add("navBarTitle");
+    title.innerHTML = "Urgent Tasks";
 
-        var navBar = document.querySelector('.navBar');
-        var newProjectTab = document.createElement('div');
-        newProjectTab.classList.add('projectTab');
+    document.querySelector(".content").appendChild(title);
 
-        var deleteBtn = document.createElement('div');
-        deleteBtn.innerHTML = "x";
-        deleteBtn.classList.add('deleteProject');
-        var name = document.createElement('div');
-        name.innerHTML = promptName;
+    displayTaskHeader();
+    displayImportantTasks();
+  } else {
+    navBar.classList.add("active");
+    let projectTitle = navBar.childNodes[0].data;
 
-        newProjectTab.append(name, deleteBtn);
+    var head = document.createElement("div");
+    head.classList.add("navBarHead");
+    var title = document.createElement("div");
+    title.classList.add("navBarTitle");
+    var subHead = document.createElement("div");
+    subHead.classList.add("subHead");
+    title.innerHTML = projectTitle;
+    subHead.innerHTML = calendar.today;
+    var addBtn = document.createElement("button");
+    addBtn.innerHTML = "+";
+    addBtn.classList.add("addBtns");
+    addBtn.onclick = openMainForm;
 
+    head.append(title, subHead, addBtn);
+    document.querySelector(".content").appendChild(head);
 
-        navBar.appendChild(newProjectTab);
+    displayTaskHeader();
+    displayProjectTasks(projectTitle);
+  }
+}
 
-    };
+export function displayTaskHeader() {
+  let headerContainer = document.createElement("div");
+  headerContainer.classList.add("flex");
 
-    // selects title and dueDate for all to-do items in current project
-    const displayCurrentProject = (index, allProjects) => {
-        var content = document.querySelector('.content')
-        content.innerHTML = "";
+  var nameHeader = document.createElement("div");
+  nameHeader.innerHTML = "task";
+  nameHeader.classList.add("listName");
+  nameHeader.setAttribute("id", "taskHeader");
+  var dueHead = document.createElement("div");
+  dueHead.innerHTML = "due";
+  dueHead.classList.add("listDue");
+  dueHead.setAttribute("id", "dateHeader");
 
-        todoDisplay.appendTaskHeader(index);
-        for (var i=0; i < allProjects[index].length; i++) {
-            var title = allProjects[index][i].title;
-            var dueDate = allProjects[index][i].dueDate;
-            var priority = allProjects[index][i].priority;
-            todoDisplay.displayNewTodo( title, dueDate, priority );
+  headerContainer.append(nameHeader, dueHead);
+  content.append(headerContainer);
+}
 
-        };
-    
-    };
+// BUTTONS
+function showDeleteBtn(e) {
+  e.target.querySelector(".deleteBtn").classList.toggle("hide");
+}
 
-    const displayAllProjects = () => {
-        var allProjects = Storage().project();
-        for (let i=1; i < allProjects.length; i++) {
-            var names = Storage().names();
-            displayNewProject(names[i]);
-        };
-    };
+function hideDeleteBtn(e) {
+  e.target.querySelector(".deleteBtn").classList.toggle("hide");
+}
 
-    const removeProject = (index) => {
-        var projects = document.querySelectorAll('.projectTab');
-        projects[index].remove();
+function showDeleteProjBtn(e) {
+  e.target.querySelector(".deleteProject").classList.toggle("disappear");
+}
 
-    };
+function hideDeleteProjBtn(e) {
+  e.target.querySelector(".deleteProject").classList.toggle("disappear");
+}
 
-    return {getName, displayNewProject, displayCurrentProject, displayAllProjects, removeProject};
-})();
+// FORMS
+let formMain = document.querySelector(".formMain");
+let editForm = document.querySelector(".editForm");
+let content = document.querySelector(".content");
+let mainFormContainer = document.getElementById("formDiv");
 
-const navBarDisplay = (() => {
-    
-    const todayHeader = (today) => {
-        document.querySelector('.content').innerHTML = "";
+export function openEditForm() {
+  closeMainForm();
+  editForm.style.display = "grid";
+  document.querySelector("#cancelEdit").style.display = "block";
+}
 
-        var head = document.createElement('div');
-        head.classList.add('navBarHead');
-        var title = document.createElement('div');
-        title.classList.add('navBarTitle');
-        var subHead = document.createElement('div');
-        subHead.classList.add('subHead');
-        title.innerHTML = "Today"
-        subHead.innerHTML = today;
-    
-        head.append(title, subHead);
-        document.querySelector('.content').appendChild(head);
-    };
+export function closeEditForm() {
+  editForm.reset();
+  editForm.style.display = "none";
+  document.querySelector("#cancelEdit").style.display = "none";
+}
 
-    const tomorrowHeader = (tomorrow) => {
-        document.querySelector('.content').innerHTML = "";
+export function openMainForm() {
+  mainFormContainer.classList.toggle("hide");
+}
 
-        var head = document.createElement('div');
-        head.classList.add('navBarHead');
-        var title = document.createElement('div');
-        title.classList.add('navBarTitle');
-        var subHead = document.createElement('div');
-        subHead.classList.add('subHead');
-        title.innerHTML = "Tomorrow"
-        subHead.innerHTML = tomorrow;
-    
-        head.append(title, subHead);
-        document.querySelector('.content').appendChild(head);
-    };
+export function closeMainForm() {
+  formMain.reset();
+  mainFormContainer.classList.toggle("hide");
+}
 
-    const importantHeader = () => {
-        document.querySelector('.content').innerHTML = "";
-
-        var title = document.createElement('div');
-        title.classList.add('navBarTitle');
-        title.innerHTML = "Urgent Tasks"
-    
-        document.querySelector('.content').appendChild(title);
-    };
-
-    return { todayHeader, tomorrowHeader, importantHeader };
-})();
-
-export { todoDisplay, projectDisplay, formDisplay, navBarDisplay };
-
+export function toggleProjectForm() {
+  document.getElementById("addProjectDiv").classList.toggle("hide");
+}

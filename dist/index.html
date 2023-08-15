@@ -9,38 +9,38 @@
 </head>
 <body>
     <div class="header">
-        <div class="left"><img src="./94071bc9bfa744536f38.png" class="headerIcon" class="icon" alt=""></div>
+        <div id="app-title" class="left">my to-do list</div>
         <div class="right">
             <img src="./e3818f44ac9602343b64.png" class="headerIcon" class="icon" alt="">
             <img src="./2c378c9ee25927123f7d.png" class="headerIcon" class="icon" alt="">
-            <button id="openMainForm" class="addBtns">+</button>
         </div>
     </div>
     <div class="navBar">
-        <div class="navItem">
+        <div class="flex">
+            <img src="./94071bc9bfa744536f38.png" class="icon" alt="">
+            <div id="home"  class="navItem mainNav">home</div>
+        </div>
+        <div class="flex">
             <img src="./350ff41396063ad5dafb.png" class="icon" alt="">
-            <div id="today">today</div>
+            <div id="today"  class="navItem mainNav">today</div>
         </div>
-        <div class="navItem">
+        <div class="flex">
             <img src="./4425aa0da76ded7769de.png" class="icon" alt="">
-            <div id="tomorrow">tomorrow</div>
+            <div id="tomorrow" class="navItem mainNav">tomorrow</div>
         </div>
-        <div class="navItem">
+        <div class="flex">
             <img src="./4230b24128b26c604c81.png" class="icon" alt="">
-            <div id="important">important tasks</div>
+            <div id="important" class="navItem mainNav">important tasks</div>
         </div>
         <div class="navHead">
             <div>projects</div>
-            <button id="addProject" class="addBtns">+</button>
-        </div>
-        <div class="projectTab" id="mainProject">
-            <div>main project</div>
-            <div class="editMainProject">...</div>
+            <button id="openNewProjectFormBtn" class="addBtns">+</button>
         </div>
     </div>
-    <div class="formDiv">
+    <div id="formDiv"  class="hide">
+        <button class="cancelBtn" id="cancelMain">x</button>
         <form class="formMain">
-            <input type="text" id="title" placeholder="task">
+            <input type="text" id="title" placeholder="task" required>
             <input type="text" id="description" placeholder="description">
             <input type="text" id="dueDate" placeholder="due date">
             <div class="priorityDiv">
@@ -55,13 +55,11 @@
                 <input type="submit" value="add" id="mainSubmit">
             </div>
         </form>
-        <button class="cancelBtn" id="cancelMain">cancel</button>
     </div>
     <div class="content">
-        <div id="taskHeader" class="listName" >task</div>
-        <div id="dateHeader" class="listDue">due</div>
     </div>
-    <div class="editFormDiv">
+    <div id="editFormDiv"  class="hide">
+        <button id="cancelEdit" class="cancelBtn">x</button>
         <form class="editForm">
             <input type="text" id="titleEdit" placeholder="edit task">
             <input type="text" id="descriptionEdit" placeholder="description">
@@ -79,7 +77,14 @@
                 <button type="button" id="delete">remove</button>
             </div>
         </form>
-        <button id="cancelEdit" class="cancelBtn">cancel</button>
+    </div>
+    <div id="addProjectDiv" class="hide">
+        <button id="cancel" class="cancelBtn">x</button>
+        <form>
+            <div>Add New Project</div>
+            <input id="projectInput" placeholder="project name" maxlength="20"></input>
+            <button type="submit" id="newProjectSubmitBtn">add project</button>
+        </form>
     </div>
 <script src="main.js"></script>
 </body>
