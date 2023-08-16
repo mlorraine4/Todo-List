@@ -6,9 +6,11 @@ import {
   closeEditForm,
   closeMainForm,
   displayAllProjectButtons,
+  displayError,
   displayTask,
   openEditForm,
   removeTaskFromDisplay,
+  showTaskInEditForm,
   togglePage,
   toggleProjectForm,
 } from "./display";
@@ -17,6 +19,7 @@ import parse from "date-fns/parse";
 import add from "date-fns/add";
 import format from "date-fns/format";
 import uniqid from "uniqid";
+import { myList } from "./Controller";
 
 // date-fns & flatpickr calendar
 export const calendar = (() => {
@@ -53,97 +56,18 @@ const App = () => {
   displayAllProjectButtons();
 };
 
-let selectedProject = null;
-let selectedTask = null;
-
 App();
 
-export function handleDeleteProject(e) {
-  let div = e.target.parentElement;
-  let project = e.target.previousSibling.data;
-  console.log(project);
-
-  // remove button
-  div.remove();
-
-  // delete tasks and project from storage
-  Storage.removeProject(project);
-
-  togglePage(document.getElementById("home"));
-}
-
-export function handleDeleteTask(e) {
-  let id = e.target.parentElement.getAttribute("data-key");
-  // delete from storage
-  Storage.removeTask(id);
-  // remove from display
-  removeTaskFromDisplay(id);
-}
-
-export function handleOpenEditForm(e) {
-  let id = e.target.parentElement.getAttribute("data-key");
-  let task = Storage.myToDoList.allTasks[id];
-  selectedTask = id;
-  openEditForm();
-  showTaskInEditForm(task);
-  console.log(task);
-}
-
-export function handleEditSubmit(e) {
-   e.preventDefault();
-   let id = selectedTask;
-   let timestamp = Storage.myToDoList.allTasks[id].timestamp;
-   var title = document.getElementById("titleEdit").value;
-   var description = document.getElementById("descriptionEdit").value;
-   var dueDate = document.getElementById("dueDateEdit").value;
-   var select = document.querySelector("#priorityEdit");
-   var priority = select.options[select.selectedIndex].value;
-
-   var formatDate = calendar.parseDate(dueDate);
-
-   let task = new Todo(
-     title,
-     description,
-     formatDate,
-     priority,
-     id,
-     selectedProject,
-     timestamp
-   );
-
-   Storage.addTask(task);
-   updateTaskDiv(task);
-   closeEditForm();
-   selectedTask = null;
-}
-
-function updateTaskDiv(task) {
-  let taskContainer;
-  let id = task.id;
-  let divs = document.querySelectorAll("[data-key]");
-  divs.forEach((div) => {
-    if (div.getAttribute("data-key") === id) {
-      taskContainer = div;
-    }
-  });
-  taskContainer.querySelector(".listName").innerHTML = task.title;
-  taskContainer.querySelector(".listDue").innerHTML = task.dueDate;
-}
-
-function showTaskInEditForm(task) {
-  let formTitle = document.getElementById('titleEdit');
-  let formDescription = document.getElementById('descriptionEdit');
-  let formDueDate = document.querySelectorAll('.form-control')[1];
-  let formPriority = document.getElementById('priorityEdit');
-
-  formTitle.value = task.title;
-  formDescription = task.description;
-  formDueDate.placeholder = task.dueDate;
-  formPriority.value = task.priority;
-}
+// DOM elements and event listeners.
+let mainForm = document.querySelector(".formMain");
+mainForm.onsubmit = handleSubmitMain;
+let editForm = document.querySelector(".editForm");
+editForm.onsubmit = handleSubmitEdit;
+let newProjectBtn = document.getElementById("newProjectSubmitBtn");
+newProjectBtn.onclick = handleAddProject;
 
 // forms functionality
-const submit = (e) => {
+const handleSubmitMain = (e) => {
   e.preventDefault();
   let timestamp = Date.now();
   let id = uniqid() + timestamp;
@@ -169,7 +93,38 @@ const submit = (e) => {
   closeMainForm();
 };
 
-function submitNewProject(e) {
+function handleSubmitEdit(e) {
+  e.preventDefault();
+  let id = myList.task;
+  let selectedProject = myList.project;
+  let timestamp = Storage.myToDoList.allTasks[id].timestamp;
+  var title = document.getElementById("titleEdit").value;
+  var description = document.getElementById("descriptionEdit").value;
+  var dueDate = document.getElementById("dueDateEdit").value;
+  var select = document.querySelector("#priorityEdit");
+  var priority = select.options[select.selectedIndex].value;
+  if (validateForm(dueDate)) {
+    var formatDate = calendar.parseDate(dueDate);
+
+    let task = new Todo(
+      title,
+      description,
+      formatDate,
+      priority,
+      id,
+      selectedProject,
+      timestamp
+    );
+
+    Storage.addTask(task);
+    updateTaskDiv(task);
+    closeEditForm();
+  } else {
+    displayError();
+  }
+}
+
+function handleAddProject(e) {
   e.preventDefault();
   let project = document.getElementById("projectInput").value;
 
@@ -178,29 +133,42 @@ function submitNewProject(e) {
   toggleProjectForm();
 }
 
-// DOM elements and event listeners.
-var formSubmitBtn = document.getElementById("mainSubmit");
-formSubmitBtn.onclick = submit;
-var editFormSubmitBtn = document.getElementById("editSubmit");
-editFormSubmitBtn.onclick = handleEditSubmit;
-var cancelMain = document.getElementById("cancelMain");
-cancelMain.onclick = closeMainForm;
-var cancelEdit = document.getElementById("cancelEdit");
-cancelEdit.onclick = closeEditForm;
-let newProjectBtn = document.getElementById("newProjectSubmitBtn");
-newProjectBtn.onclick = submitNewProject;
-let openProjectForm = document.getElementById("openNewProjectFormBtn");
-openProjectForm.onclick = toggleProjectForm;
+export function handleDeleteTask(e) {
+  let id = e.target.parentElement.getAttribute("data-key");
+  // delete from storage
+  Storage.removeTask(id);
+  // remove from display
+  removeTaskFromDisplay(id);
+}
+
+export function handleOpenEditForm(e) {
+  let id = e.target.parentElement.getAttribute("data-key");
+  let task = Storage.myToDoList.allTasks[id];
+  myList.task = id;
+  openEditForm();
+  showTaskInEditForm(task);
+}
+
+export function handleDeleteProject(e) {
+  let div = e.target.parentElement;
+  let project = e.target.previousSibling.data;
+
+  // remove button
+  div.remove();
+
+  // delete tasks and project from storage
+  Storage.removeProject(project);
+
+  togglePage(document.getElementById("home"));
+}
 
 document.addEventListener(
   "click",
   function (e) {
     if (e.target.matches(".mainNav")) {
-      selectedProject = null;
       togglePage(e.target);
     }
     if (e.target.matches(".projectTab")) {
-      selectedProject = e.target.childNodes[0].data;
       togglePage(e.target);
     }
   },

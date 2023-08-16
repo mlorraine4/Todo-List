@@ -40,12 +40,13 @@
     <div id="formDiv"  class="hide">
         <button class="cancelBtn" id="cancelMain">x</button>
         <form class="formMain">
-            <input type="text" id="title" placeholder="task" required>
-            <input type="text" id="description" placeholder="description">
-            <input type="text" id="dueDate" placeholder="due date">
+            <div class="formTitle">Add Task</div>
+            <input class="pad" type="text" id="title" placeholder="task" required>
+            <input class="pad" type="text" id="description" placeholder="description">
+            <input class="pad" type="text" id="dueDate" placeholder="due date" required>
             <div class="priorityDiv">
-                <label for="priority">priority</label>
-                <select name = "priority" id="priority">
+                <label for="priority" class="pad">priority</label>
+                <select name = "priority" id="priority" class="pad">
                     <option value="none">none</option>
                     <option value="low">low</option>
                     <option value="high">high</option>
@@ -61,28 +62,29 @@
     <div id="editFormDiv"  class="hide">
         <button id="cancelEdit" class="cancelBtn">x</button>
         <form class="editForm">
-            <input type="text" id="titleEdit" placeholder="edit task">
-            <input type="text" id="descriptionEdit" placeholder="description">
-            <input type="text" id="dueDateEdit" placeholder="due date">
+            <div class="formTitle">Edit Task</div>
+            <input class="pad" type="text" id="titleEdit" placeholder="edit task">
+            <input class="pad" type="text" id="descriptionEdit" placeholder="description">
+            <input class="pad" type="text" id="dueDateEdit" placeholder="due date">
             <div class="priorityDiv">
-                <label for="priorityEdit">priority</label>
-                <select name = "priority" id="priorityEdit">
+                <label for="priorityEdit" class="pad">priority</label>
+                <select name = "priority" id="priorityEdit" class="pad">
                     <option value="none">none</option>
                     <option value="low">low</option>
                     <option value="high">high</option>
                 </select>
             </div>
+            <div id="error">Please re-select a date.</div>
             <div class="formBtns">
                 <input type="submit" value="update" id="editSubmit">
-                <button type="button" id="delete">remove</button>
             </div>
         </form>
     </div>
     <div id="addProjectDiv" class="hide">
-        <button id="cancel" class="cancelBtn">x</button>
-        <form>
-            <div>Add New Project</div>
-            <input id="projectInput" placeholder="project name" maxlength="20"></input>
+        <button id="cancelProject" class="cancelBtn">x</button>
+        <form id="projectForm">
+            <div class="formTitle">Add New Project</div>
+            <input class="pad" id="projectInput" placeholder="project name" maxlength="20" required></input>
             <button type="submit" id="newProjectSubmitBtn">add project</button>
         </form>
     </div>

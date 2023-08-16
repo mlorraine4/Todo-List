@@ -1,4 +1,10 @@
-import { calendar, handleDeleteProject, handleDeleteTask, handleOpenEditForm } from ".";
+import {
+  calendar,
+  handleDeleteProject,
+  handleDeleteTask,
+  handleOpenEditForm,
+} from ".";
+import { myList } from "./Controller";
 import { Storage } from "./storage";
 
 // Tasks
@@ -106,7 +112,7 @@ export function displayProjectTasks(projName) {
   let tasks = Object.values(Storage.myToDoList[projName]);
   tasks.forEach((el) => {
     displayTask(el);
-  })
+  });
 }
 
 export function displayAllProjectButtons() {
@@ -138,11 +144,22 @@ export function addProjectButton(projName) {
   return projectBtnContainer;
 }
 
-const deleteProjectButton = () => {};
+export function updateTaskDiv(task) {
+  let taskContainer;
+  let id = task.id;
+  let divs = document.querySelectorAll("[data-key]");
+  divs.forEach((div) => {
+    if (div.getAttribute("data-key") === id) {
+      taskContainer = div;
+    }
+  });
+  taskContainer.querySelector(".listName").innerHTML = task.title;
+  taskContainer.querySelector(".listDue").innerHTML = task.dueDate;
+}
 
 // Display selected navigation page.
 export function togglePage(navBar) {
-  console.log(navBar.innerHTML);
+  myList.project = null;
   content.innerHTML = "";
   let navItems = document.querySelectorAll(".navItem");
   navItems.forEach((el) => {
@@ -211,7 +228,7 @@ export function togglePage(navBar) {
     displayImportantTasks();
   } else {
     navBar.classList.add("active");
-    let projectTitle = navBar.childNodes[0].data;
+    myList.project = navBar.childNodes[0].data;
 
     var head = document.createElement("div");
     head.classList.add("navBarHead");
@@ -272,27 +289,90 @@ function hideDeleteProjBtn(e) {
 let formMain = document.querySelector(".formMain");
 let editForm = document.querySelector(".editForm");
 let content = document.querySelector(".content");
+let navBar = document.querySelector(".navBar");
+let projectForm = document.querySelector("#projectForm");
 let mainFormContainer = document.getElementById("formDiv");
 let editFormContainer = document.getElementById("editFormDiv");
+let cancelMain = document.getElementById("cancelMain");
+let cancelEdit = document.getElementById("cancelEdit");
+let openProjectForm = document.getElementById("openNewProjectFormBtn");
+let cancelProject = document.querySelector("#cancelProject");
+
+openProjectForm.onclick = toggleProjectForm;
+cancelProject.onclick = toggleProjectForm;
+cancelMain.onclick = closeMainForm;
+cancelEdit.onclick = closeEditForm;
 
 export function openEditForm() {
-  editFormContainer.classList.toggle('hide');
+  editFormContainer.classList.toggle("hide");
+  navBar.classList.toggle("stop-scrolling");
+  navBar.classList.toggle("fade");
+  content.classList.toggle("stop-scrolling");
+  content.classList.toggle("fade");
 }
 
 export function closeEditForm() {
   editForm.reset();
   editFormContainer.classList.toggle("hide");
+  navBar.classList.toggle("stop-scrolling");
+  navBar.classList.toggle("fade");
+  content.classList.toggle("stop-scrolling");
+  content.classList.toggle("fade");
+
+  myList.task = null;
+  hideError();
 }
 
 export function openMainForm() {
   mainFormContainer.classList.toggle("hide");
+  navBar.classList.toggle("stop-scrolling");
+  navBar.classList.toggle("fade");
+  content.classList.toggle("stop-scrolling");
+  content.classList.toggle("fade");
 }
 
 export function closeMainForm() {
   formMain.reset();
   mainFormContainer.classList.toggle("hide");
+  navBar.classList.toggle("stop-scrolling");
+  navBar.classList.toggle("fade");
+  content.classList.toggle("stop-scrolling");
+  content.classList.toggle("fade");
 }
 
 export function toggleProjectForm() {
+  projectForm.reset();
   document.getElementById("addProjectDiv").classList.toggle("hide");
+  navBar.classList.toggle("stop-scrolling");
+  navBar.classList.toggle("fade");
+  content.classList.toggle("stop-scrolling");
+  content.classList.toggle("fade");
+}
+
+export function displayError() {
+  document.querySelector("#error").style.opacity = 1;
+}
+
+export function hideError() {
+  document.querySelector("#error").style.opacity = 0;
+}
+
+export function validateForm(date) {
+  if (date.length !== 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export function showTaskInEditForm(task) {
+  let formTitle = document.getElementById("titleEdit");
+  let formDescription = document.getElementById("descriptionEdit");
+  let formDueDate = document.querySelectorAll(".form-control")[1];
+  let formPriority = document.getElementById("priorityEdit");
+
+  formTitle.value = task.title;
+  formDescription.value = task.description;
+  formDueDate.placeholder = task.dueDate;
+  formPriority.value = task.priority;
 }
