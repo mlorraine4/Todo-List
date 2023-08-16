@@ -9,6 +9,11 @@ body {
     position: relative;
 }
 
+button {
+    outline: none;
+    border: none;
+}
+
 #app-title {
     font-weight: bold;
     font-size: 1.2em;
@@ -23,6 +28,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+}
+
+.flex-left {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 10px;
+    height: min-content;
 }
 
 .hide {
@@ -81,7 +95,6 @@ body {
     font-weight: bold;
     font-style: italic;
     font-size: 1.2em;
-    margin-bottom: 20px
 }
 
 .taskContainer {
@@ -99,7 +112,6 @@ body {
 }
 
 .addBtns {
-    border: none;
     border-radius: 8px;
     height: 20px;
     width: 20px;
@@ -220,7 +232,7 @@ label {
     font-style: italic;
 }
 
-.deleteProject {
+.deleteProject, .deleteBtn {
     background-color: rgb(225, 0, 0, 60%);
     border-radius: 8px;
     padding: 2px 5px 2px 5px;

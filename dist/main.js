@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;\r\n    margin: 0;\r\n    height: 100vh;\r\n    display: grid;\r\n    width: 100vw;\r\n    grid-template-columns: minmax(300px, 15%) auto;\r\n    grid-template-rows: 60px calc(100vh - 60px);\r\n    position: relative;\r\n}\r\n\r\n#app-title {\r\n    font-weight: bold;\r\n    font-size: 1.2em;\r\n}\r\n\r\n.active {\r\n    background-color: white;\r\n    font-weight: bold;\r\n}\r\n\r\n.flex {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.hide {\r\n    display: none;\r\n}\r\n\r\n.disappear {\r\n    opacity: 0;\r\n}\r\n\r\n#formDiv, #editFormDiv, #addProjectDiv {\r\n    position: absolute;\r\n    width: 550px;\r\n    top: 0;\r\n    left: auto;\r\n    right: auto;\r\n    background-color: white;\r\n    box-shadow: 5px 5px 5px #dbdbdb;\r\n    border-radius: 8px;\r\n}\r\n\r\n.header {\r\n    grid-row: 1/2;\r\n    grid-column: 1/3;\r\n    background-color: #92b4ec;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    color: white;\r\n}\r\n\r\n.navBar {\r\n    background-color: rgba(188, 193, 194, 0.2);\r\n    grid-column: 1/2;\r\n    grid-row: 2/3;\r\n    padding: 30px;\r\n}\r\n\r\n.navHead {\r\n    display: flex;\r\n    position: relative;\r\n    justify-content: space-between;\r\n    font-size: 1.2em;\r\n    color: #545454;\r\n    margin: 20px 0 20px 0;\r\n}\r\n\r\n.content {\r\n    grid-column: 2/3;\r\n    grid-row: 2/3;\r\n    background-color: #fff;\r\n    margin: 50px;\r\n}\r\n\r\n#taskHeader, #dateHeader {\r\n    font-weight: bold;\r\n    font-style: italic;\r\n    font-size: 1.2em;\r\n    margin-bottom: 20px\r\n}\r\n\r\n.taskContainer {\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.listName, .listDue {\r\n    width: 40%;\r\n}\r\n\r\n.formBtns {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.addBtns {\r\n    border: none;\r\n    border-radius: 8px;\r\n    height: 20px;\r\n    width: 20px;\r\n    background-color: rgb(146, 180, 236);\r\n    position: absolute;\r\n    top: 50%;\r\n    right: 0;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.addBtns:hover {\r\n    background-color: rgb(146, 180, 236, 0.5);\r\n}\r\n\r\n.cancelBtn {\r\n    position: absolute;\r\n    top: 5px;\r\n    right: 20px;\r\n    border: none;\r\n    border-radius:  8px;\r\n    padding: 5px;\r\n}\r\n\r\n#mainSubmit, #delete, #editSubmit {\r\n    border: none;\r\n    border-radius:  8px;\r\n    padding: 5px;\r\n}\r\n\r\n#mainSubmit, #editSubmit {\r\n    background-color: rgb(22, 163, 74, 60%);\r\n}\r\n\r\n#delete, .cancelBtn {\r\n    background-color: rgb(225, 0, 0, 60%);\r\n}\r\n\r\ninput, select {\r\n    outline-style: none;\r\n    border: none;\r\n    border-radius: 8px;\r\n}\r\n\r\nselect, label {\r\n    width: min-content;\r\n}\r\n\r\nlabel {\r\n    display: inline-block;\r\n}\r\n\r\n#title, #titleEdit {\r\n    font-weight: bold;\r\n    font-size: 2em;\r\n}\r\n\r\n.icon, .headerIcon {\r\n    height: 20px;\r\n    width: 20px;\r\n    padding: 0 5px 0 5px;\r\n}\r\n\r\n.projectTab {\r\n    display: flex;\r\n    margin-left: 10px;\r\n    justify-content: space-between;\r\n    padding: 5px;\r\n}\r\n\r\n.navItem {\r\n    width: 100%;\r\n    border-radius: 8px;\r\n}\r\n\r\n.navItem:hover {\r\n    background-color: white;\r\n}\r\n\r\n.taskContainer {\r\n    border-radius: 8px;\r\n    padding: 10px;\r\n}\r\n.taskContainer:hover {\r\n    background-color: rgb(146, 180, 236, 0.3);\r\n}\r\n\r\n.mainNav {\r\n    font-size: 1.2em;\r\n    padding: 10px;\r\n    margin: 5px;\r\n}\r\n\r\n.edit {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    height: auto;\r\n}\r\n.edit:hover {\r\n    background-color: rgba(188, 193, 194, 0.4);\r\n    border-radius: 8px;\r\n}\r\n\r\n.navBarTitle {\r\n    font-weight: bold;\r\n    font-size: 2em;\r\n    padding-bottom: 50x;\r\n    padding-right: 10px;\r\n}\r\n\r\n.navBarHead {\r\n    display: flex;\r\n    align-items:baseline;\r\n    position: relative;\r\n}\r\n\r\n.subHead {\r\n    font-style: italic;\r\n}\r\n\r\n.deleteProject {\r\n    background-color: rgb(225, 0, 0, 60%);\r\n    border-radius: 8px;\r\n    padding: 2px 5px 2px 5px;\r\n    color: white;\r\n}\r\n\r\n.editMainProject {\r\n    opacity: 0;\r\n    background-color: white;\r\n    border-radius: 8px;\r\n}\r\n\r\n.left {\r\n    margin-left: 20px;\r\n}\r\n\r\n.right {\r\n    display: flex;\r\n    align-items: center;\r\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,6EAA6E;IAC7E,SAAS;IACT,aAAa;IACb,aAAa;IACb,YAAY;IACZ,8CAA8C;IAC9C,2CAA2C;IAC3C,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;IACjB,gBAAgB;AACpB;;AAEA;IACI,uBAAuB;IACvB,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,UAAU;AACd;;AAEA;IACI,kBAAkB;IAClB,YAAY;IACZ,MAAM;IACN,UAAU;IACV,WAAW;IACX,uBAAuB;IACvB,+BAA+B;IAC/B,kBAAkB;AACtB;;AAEA;IACI,aAAa;IACb,gBAAgB;IAChB,yBAAyB;IACzB,aAAa;IACb,mBAAmB;IACnB,8BAA8B;IAC9B,YAAY;AAChB;;AAEA;IACI,0CAA0C;IAC1C,gBAAgB;IAChB,aAAa;IACb,aAAa;AACjB;;AAEA;IACI,aAAa;IACb,kBAAkB;IAClB,8BAA8B;IAC9B,gBAAgB;IAChB,cAAc;IACd,qBAAqB;AACzB;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,sBAAsB;IACtB,YAAY;AAChB;;AAEA;IACI,iBAAiB;IACjB,kBAAkB;IAClB,gBAAgB;IAChB;AACJ;;AAEA;IACI,aAAa;IACb,WAAW;AACf;;AAEA;IACI,UAAU;AACd;;AAEA;IACI,aAAa;IACb,yBAAyB;AAC7B;;AAEA;IACI,YAAY;IACZ,kBAAkB;IAClB,YAAY;IACZ,WAAW;IACX,oCAAoC;IACpC,kBAAkB;IAClB,QAAQ;IACR,QAAQ;IACR,gCAAgC;AACpC;;AAEA;IACI,yCAAyC;AAC7C;;AAEA;IACI,kBAAkB;IAClB,QAAQ;IACR,WAAW;IACX,YAAY;IACZ,mBAAmB;IACnB,YAAY;AAChB;;AAEA;IACI,YAAY;IACZ,mBAAmB;IACnB,YAAY;AAChB;;AAEA;IACI,uCAAuC;AAC3C;;AAEA;IACI,qCAAqC;AACzC;;AAEA;IACI,mBAAmB;IACnB,YAAY;IACZ,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,qBAAqB;AACzB;;AAEA;IACI,iBAAiB;IACjB,cAAc;AAClB;;AAEA;IACI,YAAY;IACZ,WAAW;IACX,oBAAoB;AACxB;;AAEA;IACI,aAAa;IACb,iBAAiB;IACjB,8BAA8B;IAC9B,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,kBAAkB;AACtB;;AAEA;IACI,uBAAuB;AAC3B;;AAEA;IACI,kBAAkB;IAClB,aAAa;AACjB;AACA;IACI,yCAAyC;AAC7C;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,WAAW;AACf;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,YAAY;AAChB;AACA;IACI,0CAA0C;IAC1C,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;IACjB,cAAc;IACd,mBAAmB;IACnB,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,oBAAoB;IACpB,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,qCAAqC;IACrC,kBAAkB;IAClB,wBAAwB;IACxB,YAAY;AAChB;;AAEA;IACI,UAAU;IACV,uBAAuB;IACvB,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,mBAAmB;AACvB","sourcesContent":["body {\r\n    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;\r\n    margin: 0;\r\n    height: 100vh;\r\n    display: grid;\r\n    width: 100vw;\r\n    grid-template-columns: minmax(300px, 15%) auto;\r\n    grid-template-rows: 60px calc(100vh - 60px);\r\n    position: relative;\r\n}\r\n\r\n#app-title {\r\n    font-weight: bold;\r\n    font-size: 1.2em;\r\n}\r\n\r\n.active {\r\n    background-color: white;\r\n    font-weight: bold;\r\n}\r\n\r\n.flex {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.hide {\r\n    display: none;\r\n}\r\n\r\n.disappear {\r\n    opacity: 0;\r\n}\r\n\r\n#formDiv, #editFormDiv, #addProjectDiv {\r\n    position: absolute;\r\n    width: 550px;\r\n    top: 0;\r\n    left: auto;\r\n    right: auto;\r\n    background-color: white;\r\n    box-shadow: 5px 5px 5px #dbdbdb;\r\n    border-radius: 8px;\r\n}\r\n\r\n.header {\r\n    grid-row: 1/2;\r\n    grid-column: 1/3;\r\n    background-color: #92b4ec;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    color: white;\r\n}\r\n\r\n.navBar {\r\n    background-color: rgba(188, 193, 194, 0.2);\r\n    grid-column: 1/2;\r\n    grid-row: 2/3;\r\n    padding: 30px;\r\n}\r\n\r\n.navHead {\r\n    display: flex;\r\n    position: relative;\r\n    justify-content: space-between;\r\n    font-size: 1.2em;\r\n    color: #545454;\r\n    margin: 20px 0 20px 0;\r\n}\r\n\r\n.content {\r\n    grid-column: 2/3;\r\n    grid-row: 2/3;\r\n    background-color: #fff;\r\n    margin: 50px;\r\n}\r\n\r\n#taskHeader, #dateHeader {\r\n    font-weight: bold;\r\n    font-style: italic;\r\n    font-size: 1.2em;\r\n    margin-bottom: 20px\r\n}\r\n\r\n.taskContainer {\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.listName, .listDue {\r\n    width: 40%;\r\n}\r\n\r\n.formBtns {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.addBtns {\r\n    border: none;\r\n    border-radius: 8px;\r\n    height: 20px;\r\n    width: 20px;\r\n    background-color: rgb(146, 180, 236);\r\n    position: absolute;\r\n    top: 50%;\r\n    right: 0;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.addBtns:hover {\r\n    background-color: rgb(146, 180, 236, 0.5);\r\n}\r\n\r\n.cancelBtn {\r\n    position: absolute;\r\n    top: 5px;\r\n    right: 20px;\r\n    border: none;\r\n    border-radius:  8px;\r\n    padding: 5px;\r\n}\r\n\r\n#mainSubmit, #delete, #editSubmit {\r\n    border: none;\r\n    border-radius:  8px;\r\n    padding: 5px;\r\n}\r\n\r\n#mainSubmit, #editSubmit {\r\n    background-color: rgb(22, 163, 74, 60%);\r\n}\r\n\r\n#delete, .cancelBtn {\r\n    background-color: rgb(225, 0, 0, 60%);\r\n}\r\n\r\ninput, select {\r\n    outline-style: none;\r\n    border: none;\r\n    border-radius: 8px;\r\n}\r\n\r\nselect, label {\r\n    width: min-content;\r\n}\r\n\r\nlabel {\r\n    display: inline-block;\r\n}\r\n\r\n#title, #titleEdit {\r\n    font-weight: bold;\r\n    font-size: 2em;\r\n}\r\n\r\n.icon, .headerIcon {\r\n    height: 20px;\r\n    width: 20px;\r\n    padding: 0 5px 0 5px;\r\n}\r\n\r\n.projectTab {\r\n    display: flex;\r\n    margin-left: 10px;\r\n    justify-content: space-between;\r\n    padding: 5px;\r\n}\r\n\r\n.navItem {\r\n    width: 100%;\r\n    border-radius: 8px;\r\n}\r\n\r\n.navItem:hover {\r\n    background-color: white;\r\n}\r\n\r\n.taskContainer {\r\n    border-radius: 8px;\r\n    padding: 10px;\r\n}\r\n.taskContainer:hover {\r\n    background-color: rgb(146, 180, 236, 0.3);\r\n}\r\n\r\n.mainNav {\r\n    font-size: 1.2em;\r\n    padding: 10px;\r\n    margin: 5px;\r\n}\r\n\r\n.edit {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    height: auto;\r\n}\r\n.edit:hover {\r\n    background-color: rgba(188, 193, 194, 0.4);\r\n    border-radius: 8px;\r\n}\r\n\r\n.navBarTitle {\r\n    font-weight: bold;\r\n    font-size: 2em;\r\n    padding-bottom: 50x;\r\n    padding-right: 10px;\r\n}\r\n\r\n.navBarHead {\r\n    display: flex;\r\n    align-items:baseline;\r\n    position: relative;\r\n}\r\n\r\n.subHead {\r\n    font-style: italic;\r\n}\r\n\r\n.deleteProject {\r\n    background-color: rgb(225, 0, 0, 60%);\r\n    border-radius: 8px;\r\n    padding: 2px 5px 2px 5px;\r\n    color: white;\r\n}\r\n\r\n.editMainProject {\r\n    opacity: 0;\r\n    background-color: white;\r\n    border-radius: 8px;\r\n}\r\n\r\n.left {\r\n    margin-left: 20px;\r\n}\r\n\r\n.right {\r\n    display: flex;\r\n    align-items: center;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;\r\n    margin: 0;\r\n    height: 100vh;\r\n    display: grid;\r\n    width: 100vw;\r\n    grid-template-columns: minmax(300px, 15%) auto;\r\n    grid-template-rows: 60px calc(100vh - 60px);\r\n    position: relative;\r\n}\r\n\r\nbutton {\r\n    outline: none;\r\n    border: none;\r\n}\r\n\r\n#app-title {\r\n    font-weight: bold;\r\n    font-size: 1.2em;\r\n}\r\n\r\n.active {\r\n    background-color: white;\r\n    font-weight: bold;\r\n}\r\n\r\n.flex {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    width: 100%;\r\n}\r\n\r\n.flex-left {\r\n    display: flex;\r\n    justify-content: left;\r\n    align-items: center;\r\n    padding: 10px;\r\n    height: min-content;\r\n}\r\n\r\n.hide {\r\n    display: none;\r\n}\r\n\r\n.disappear {\r\n    opacity: 0;\r\n}\r\n\r\n#formDiv, #editFormDiv, #addProjectDiv {\r\n    position: absolute;\r\n    width: 550px;\r\n    top: 0;\r\n    left: auto;\r\n    right: auto;\r\n    background-color: white;\r\n    box-shadow: 5px 5px 5px #dbdbdb;\r\n    border-radius: 8px;\r\n}\r\n\r\n.header {\r\n    grid-row: 1/2;\r\n    grid-column: 1/3;\r\n    background-color: #92b4ec;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    color: white;\r\n}\r\n\r\n.navBar {\r\n    background-color: rgba(188, 193, 194, 0.2);\r\n    grid-column: 1/2;\r\n    grid-row: 2/3;\r\n    padding: 30px;\r\n}\r\n\r\n.navHead {\r\n    display: flex;\r\n    position: relative;\r\n    justify-content: space-between;\r\n    font-size: 1.2em;\r\n    color: #545454;\r\n    margin: 20px 0 20px 0;\r\n}\r\n\r\n.content {\r\n    grid-column: 2/3;\r\n    grid-row: 2/3;\r\n    background-color: #fff;\r\n    margin: 50px;\r\n}\r\n\r\n#taskHeader, #dateHeader {\r\n    font-weight: bold;\r\n    font-style: italic;\r\n    font-size: 1.2em;\r\n}\r\n\r\n.taskContainer {\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.listName, .listDue {\r\n    width: 40%;\r\n}\r\n\r\n.formBtns {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.addBtns {\r\n    border-radius: 8px;\r\n    height: 20px;\r\n    width: 20px;\r\n    background-color: rgb(146, 180, 236);\r\n    position: absolute;\r\n    top: 50%;\r\n    right: 0;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.addBtns:hover {\r\n    background-color: rgb(146, 180, 236, 0.5);\r\n}\r\n\r\n.cancelBtn {\r\n    position: absolute;\r\n    top: 5px;\r\n    right: 20px;\r\n    border: none;\r\n    border-radius:  8px;\r\n    padding: 5px;\r\n}\r\n\r\n#mainSubmit, #delete, #editSubmit {\r\n    border: none;\r\n    border-radius:  8px;\r\n    padding: 5px;\r\n}\r\n\r\n#mainSubmit, #editSubmit {\r\n    background-color: rgb(22, 163, 74, 60%);\r\n}\r\n\r\n#delete, .cancelBtn {\r\n    background-color: rgb(225, 0, 0, 60%);\r\n}\r\n\r\ninput, select {\r\n    outline-style: none;\r\n    border: none;\r\n    border-radius: 8px;\r\n}\r\n\r\nselect, label {\r\n    width: min-content;\r\n}\r\n\r\nlabel {\r\n    display: inline-block;\r\n}\r\n\r\n#title, #titleEdit {\r\n    font-weight: bold;\r\n    font-size: 2em;\r\n}\r\n\r\n.icon, .headerIcon {\r\n    height: 20px;\r\n    width: 20px;\r\n    padding: 0 5px 0 5px;\r\n}\r\n\r\n.projectTab {\r\n    display: flex;\r\n    margin-left: 10px;\r\n    justify-content: space-between;\r\n    padding: 5px;\r\n}\r\n\r\n.navItem {\r\n    width: 100%;\r\n    border-radius: 8px;\r\n}\r\n\r\n.navItem:hover {\r\n    background-color: white;\r\n}\r\n\r\n.taskContainer {\r\n    border-radius: 8px;\r\n    padding: 10px;\r\n}\r\n.taskContainer:hover {\r\n    background-color: rgb(146, 180, 236, 0.3);\r\n}\r\n\r\n.mainNav {\r\n    font-size: 1.2em;\r\n    padding: 10px;\r\n    margin: 5px;\r\n}\r\n\r\n.edit {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    height: auto;\r\n}\r\n.edit:hover {\r\n    background-color: rgba(188, 193, 194, 0.4);\r\n    border-radius: 8px;\r\n}\r\n\r\n.navBarTitle {\r\n    font-weight: bold;\r\n    font-size: 2em;\r\n    padding-bottom: 50x;\r\n    padding-right: 10px;\r\n}\r\n\r\n.navBarHead {\r\n    display: flex;\r\n    align-items:baseline;\r\n    position: relative;\r\n}\r\n\r\n.subHead {\r\n    font-style: italic;\r\n}\r\n\r\n.deleteProject, .deleteBtn {\r\n    background-color: rgb(225, 0, 0, 60%);\r\n    border-radius: 8px;\r\n    padding: 2px 5px 2px 5px;\r\n    color: white;\r\n}\r\n\r\n.editMainProject {\r\n    opacity: 0;\r\n    background-color: white;\r\n    border-radius: 8px;\r\n}\r\n\r\n.left {\r\n    margin-left: 20px;\r\n}\r\n\r\n.right {\r\n    display: flex;\r\n    align-items: center;\r\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,6EAA6E;IAC7E,SAAS;IACT,aAAa;IACb,aAAa;IACb,YAAY;IACZ,8CAA8C;IAC9C,2CAA2C;IAC3C,kBAAkB;AACtB;;AAEA;IACI,aAAa;IACb,YAAY;AAChB;;AAEA;IACI,iBAAiB;IACjB,gBAAgB;AACpB;;AAEA;IACI,uBAAuB;IACvB,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,WAAW;AACf;;AAEA;IACI,aAAa;IACb,qBAAqB;IACrB,mBAAmB;IACnB,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,UAAU;AACd;;AAEA;IACI,kBAAkB;IAClB,YAAY;IACZ,MAAM;IACN,UAAU;IACV,WAAW;IACX,uBAAuB;IACvB,+BAA+B;IAC/B,kBAAkB;AACtB;;AAEA;IACI,aAAa;IACb,gBAAgB;IAChB,yBAAyB;IACzB,aAAa;IACb,mBAAmB;IACnB,8BAA8B;IAC9B,YAAY;AAChB;;AAEA;IACI,0CAA0C;IAC1C,gBAAgB;IAChB,aAAa;IACb,aAAa;AACjB;;AAEA;IACI,aAAa;IACb,kBAAkB;IAClB,8BAA8B;IAC9B,gBAAgB;IAChB,cAAc;IACd,qBAAqB;AACzB;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,sBAAsB;IACtB,YAAY;AAChB;;AAEA;IACI,iBAAiB;IACjB,kBAAkB;IAClB,gBAAgB;AACpB;;AAEA;IACI,aAAa;IACb,WAAW;AACf;;AAEA;IACI,UAAU;AACd;;AAEA;IACI,aAAa;IACb,yBAAyB;AAC7B;;AAEA;IACI,kBAAkB;IAClB,YAAY;IACZ,WAAW;IACX,oCAAoC;IACpC,kBAAkB;IAClB,QAAQ;IACR,QAAQ;IACR,gCAAgC;AACpC;;AAEA;IACI,yCAAyC;AAC7C;;AAEA;IACI,kBAAkB;IAClB,QAAQ;IACR,WAAW;IACX,YAAY;IACZ,mBAAmB;IACnB,YAAY;AAChB;;AAEA;IACI,YAAY;IACZ,mBAAmB;IACnB,YAAY;AAChB;;AAEA;IACI,uCAAuC;AAC3C;;AAEA;IACI,qCAAqC;AACzC;;AAEA;IACI,mBAAmB;IACnB,YAAY;IACZ,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,qBAAqB;AACzB;;AAEA;IACI,iBAAiB;IACjB,cAAc;AAClB;;AAEA;IACI,YAAY;IACZ,WAAW;IACX,oBAAoB;AACxB;;AAEA;IACI,aAAa;IACb,iBAAiB;IACjB,8BAA8B;IAC9B,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,kBAAkB;AACtB;;AAEA;IACI,uBAAuB;AAC3B;;AAEA;IACI,kBAAkB;IAClB,aAAa;AACjB;AACA;IACI,yCAAyC;AAC7C;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,WAAW;AACf;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;IACnB,YAAY;AAChB;AACA;IACI,0CAA0C;IAC1C,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;IACjB,cAAc;IACd,mBAAmB;IACnB,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,oBAAoB;IACpB,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,qCAAqC;IACrC,kBAAkB;IAClB,wBAAwB;IACxB,YAAY;AAChB;;AAEA;IACI,UAAU;IACV,uBAAuB;IACvB,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,mBAAmB;AACvB","sourcesContent":["body {\r\n    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;\r\n    margin: 0;\r\n    height: 100vh;\r\n    display: grid;\r\n    width: 100vw;\r\n    grid-template-columns: minmax(300px, 15%) auto;\r\n    grid-template-rows: 60px calc(100vh - 60px);\r\n    position: relative;\r\n}\r\n\r\nbutton {\r\n    outline: none;\r\n    border: none;\r\n}\r\n\r\n#app-title {\r\n    font-weight: bold;\r\n    font-size: 1.2em;\r\n}\r\n\r\n.active {\r\n    background-color: white;\r\n    font-weight: bold;\r\n}\r\n\r\n.flex {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    width: 100%;\r\n}\r\n\r\n.flex-left {\r\n    display: flex;\r\n    justify-content: left;\r\n    align-items: center;\r\n    padding: 10px;\r\n    height: min-content;\r\n}\r\n\r\n.hide {\r\n    display: none;\r\n}\r\n\r\n.disappear {\r\n    opacity: 0;\r\n}\r\n\r\n#formDiv, #editFormDiv, #addProjectDiv {\r\n    position: absolute;\r\n    width: 550px;\r\n    top: 0;\r\n    left: auto;\r\n    right: auto;\r\n    background-color: white;\r\n    box-shadow: 5px 5px 5px #dbdbdb;\r\n    border-radius: 8px;\r\n}\r\n\r\n.header {\r\n    grid-row: 1/2;\r\n    grid-column: 1/3;\r\n    background-color: #92b4ec;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    color: white;\r\n}\r\n\r\n.navBar {\r\n    background-color: rgba(188, 193, 194, 0.2);\r\n    grid-column: 1/2;\r\n    grid-row: 2/3;\r\n    padding: 30px;\r\n}\r\n\r\n.navHead {\r\n    display: flex;\r\n    position: relative;\r\n    justify-content: space-between;\r\n    font-size: 1.2em;\r\n    color: #545454;\r\n    margin: 20px 0 20px 0;\r\n}\r\n\r\n.content {\r\n    grid-column: 2/3;\r\n    grid-row: 2/3;\r\n    background-color: #fff;\r\n    margin: 50px;\r\n}\r\n\r\n#taskHeader, #dateHeader {\r\n    font-weight: bold;\r\n    font-style: italic;\r\n    font-size: 1.2em;\r\n}\r\n\r\n.taskContainer {\r\n    display: flex;\r\n    width: 100%;\r\n}\r\n\r\n.listName, .listDue {\r\n    width: 40%;\r\n}\r\n\r\n.formBtns {\r\n    display: flex;\r\n    justify-content: flex-end;\r\n}\r\n\r\n.addBtns {\r\n    border-radius: 8px;\r\n    height: 20px;\r\n    width: 20px;\r\n    background-color: rgb(146, 180, 236);\r\n    position: absolute;\r\n    top: 50%;\r\n    right: 0;\r\n    transform: translate(-50%, -50%);\r\n}\r\n\r\n.addBtns:hover {\r\n    background-color: rgb(146, 180, 236, 0.5);\r\n}\r\n\r\n.cancelBtn {\r\n    position: absolute;\r\n    top: 5px;\r\n    right: 20px;\r\n    border: none;\r\n    border-radius:  8px;\r\n    padding: 5px;\r\n}\r\n\r\n#mainSubmit, #delete, #editSubmit {\r\n    border: none;\r\n    border-radius:  8px;\r\n    padding: 5px;\r\n}\r\n\r\n#mainSubmit, #editSubmit {\r\n    background-color: rgb(22, 163, 74, 60%);\r\n}\r\n\r\n#delete, .cancelBtn {\r\n    background-color: rgb(225, 0, 0, 60%);\r\n}\r\n\r\ninput, select {\r\n    outline-style: none;\r\n    border: none;\r\n    border-radius: 8px;\r\n}\r\n\r\nselect, label {\r\n    width: min-content;\r\n}\r\n\r\nlabel {\r\n    display: inline-block;\r\n}\r\n\r\n#title, #titleEdit {\r\n    font-weight: bold;\r\n    font-size: 2em;\r\n}\r\n\r\n.icon, .headerIcon {\r\n    height: 20px;\r\n    width: 20px;\r\n    padding: 0 5px 0 5px;\r\n}\r\n\r\n.projectTab {\r\n    display: flex;\r\n    margin-left: 10px;\r\n    justify-content: space-between;\r\n    padding: 5px;\r\n}\r\n\r\n.navItem {\r\n    width: 100%;\r\n    border-radius: 8px;\r\n}\r\n\r\n.navItem:hover {\r\n    background-color: white;\r\n}\r\n\r\n.taskContainer {\r\n    border-radius: 8px;\r\n    padding: 10px;\r\n}\r\n.taskContainer:hover {\r\n    background-color: rgb(146, 180, 236, 0.3);\r\n}\r\n\r\n.mainNav {\r\n    font-size: 1.2em;\r\n    padding: 10px;\r\n    margin: 5px;\r\n}\r\n\r\n.edit {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    height: auto;\r\n}\r\n.edit:hover {\r\n    background-color: rgba(188, 193, 194, 0.4);\r\n    border-radius: 8px;\r\n}\r\n\r\n.navBarTitle {\r\n    font-weight: bold;\r\n    font-size: 2em;\r\n    padding-bottom: 50x;\r\n    padding-right: 10px;\r\n}\r\n\r\n.navBarHead {\r\n    display: flex;\r\n    align-items:baseline;\r\n    position: relative;\r\n}\r\n\r\n.subHead {\r\n    font-style: italic;\r\n}\r\n\r\n.deleteProject, .deleteBtn {\r\n    background-color: rgb(225, 0, 0, 60%);\r\n    border-radius: 8px;\r\n    padding: 2px 5px 2px 5px;\r\n    color: white;\r\n}\r\n\r\n.editMainProject {\r\n    opacity: 0;\r\n    background-color: white;\r\n    border-radius: 8px;\r\n}\r\n\r\n.left {\r\n    margin-left: 20px;\r\n}\r\n\r\n.right {\r\n    display: flex;\r\n    align-items: center;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11521,6 +11521,7 @@ function displayTask(task) {
 
   var edit = document.createElement("div");
   edit.classList.add("edit");
+  edit.onclick = ___WEBPACK_IMPORTED_MODULE_0__.handleOpenEditForm;
   edit.innerHTML = "...";
 
   var remove = document.createElement("button");
@@ -11725,7 +11726,7 @@ function togglePage(navBar) {
 
 function displayTaskHeader() {
   let headerContainer = document.createElement("div");
-  headerContainer.classList.add("flex");
+  headerContainer.classList.add("flex-left");
 
   var nameHeader = document.createElement("div");
   nameHeader.innerHTML = "task";
@@ -11762,17 +11763,15 @@ let formMain = document.querySelector(".formMain");
 let editForm = document.querySelector(".editForm");
 let content = document.querySelector(".content");
 let mainFormContainer = document.getElementById("formDiv");
+let editFormContainer = document.getElementById("editFormDiv");
 
 function openEditForm() {
-  closeMainForm();
-  editForm.style.display = "grid";
-  document.querySelector("#cancelEdit").style.display = "block";
+  editFormContainer.classList.toggle('hide');
 }
 
 function closeEditForm() {
   editForm.reset();
-  editForm.style.display = "none";
-  document.querySelector("#cancelEdit").style.display = "none";
+  editFormContainer.classList.toggle("hide");
 }
 
 function openMainForm() {
@@ -11803,7 +11802,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "calendar": () => (/* binding */ calendar),
 /* harmony export */   "handleDeleteProject": () => (/* binding */ handleDeleteProject),
 /* harmony export */   "handleDeleteTask": () => (/* binding */ handleDeleteTask),
-/* harmony export */   "handleEditTask": () => (/* binding */ handleEditTask)
+/* harmony export */   "handleEditSubmit": () => (/* binding */ handleEditSubmit),
+/* harmony export */   "handleOpenEditForm": () => (/* binding */ handleOpenEditForm)
 /* harmony export */ });
 /* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./storage */ "./src/storage.js");
 /* harmony import */ var _ToDo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ToDo */ "./src/ToDo.js");
@@ -11861,6 +11861,7 @@ const App = () => {
 };
 
 let selectedProject = null;
+let selectedTask = null;
 
 App();
 
@@ -11886,7 +11887,67 @@ function handleDeleteTask(e) {
   (0,_display__WEBPACK_IMPORTED_MODULE_3__.removeTaskFromDisplay)(id);
 }
 
-function handleEditTask() {}
+function handleOpenEditForm(e) {
+  let id = e.target.parentElement.getAttribute("data-key");
+  let task = _storage__WEBPACK_IMPORTED_MODULE_0__.Storage.myToDoList.allTasks[id];
+  selectedTask = id;
+  (0,_display__WEBPACK_IMPORTED_MODULE_3__.openEditForm)();
+  showTaskInEditForm(task);
+  console.log(task);
+}
+
+function handleEditSubmit(e) {
+   e.preventDefault();
+   let id = selectedTask;
+   let timestamp = _storage__WEBPACK_IMPORTED_MODULE_0__.Storage.myToDoList.allTasks[id].timestamp;
+   var title = document.getElementById("titleEdit").value;
+   var description = document.getElementById("descriptionEdit").value;
+   var dueDate = document.getElementById("dueDateEdit").value;
+   var select = document.querySelector("#priorityEdit");
+   var priority = select.options[select.selectedIndex].value;
+
+   var formatDate = calendar.parseDate(dueDate);
+
+   let task = new _ToDo__WEBPACK_IMPORTED_MODULE_1__["default"](
+     title,
+     description,
+     formatDate,
+     priority,
+     id,
+     selectedProject,
+     timestamp
+   );
+
+   _storage__WEBPACK_IMPORTED_MODULE_0__.Storage.addTask(task);
+   updateTaskDiv(task);
+   (0,_display__WEBPACK_IMPORTED_MODULE_3__.closeEditForm)();
+   selectedTask = null;
+}
+
+function updateTaskDiv(task) {
+  let taskContainer;
+  let id = task.id;
+  let divs = document.querySelectorAll("[data-key]");
+  divs.forEach((div) => {
+    if (div.getAttribute("data-key") === id) {
+      taskContainer = div;
+    }
+  });
+  taskContainer.querySelector(".listName").innerHTML = task.title;
+  taskContainer.querySelector(".listDue").innerHTML = task.dueDate;
+}
+
+function showTaskInEditForm(task) {
+  let formTitle = document.getElementById('titleEdit');
+  let formDescription = document.getElementById('descriptionEdit');
+  let formDueDate = document.querySelectorAll('.form-control')[1];
+  let formPriority = document.getElementById('priorityEdit');
+
+  formTitle.value = task.title;
+  formDescription = task.description;
+  formDueDate.placeholder = task.dueDate;
+  formPriority.value = task.priority;
+}
 
 // forms functionality
 const submit = (e) => {
@@ -11915,18 +11976,6 @@ const submit = (e) => {
   (0,_display__WEBPACK_IMPORTED_MODULE_3__.closeMainForm)();
 };
 
-function editFormSubmit(e) {
-  e.preventDefault();
-  var title = document.getElementById("titleEdit").value;
-  var description = document.getElementById("descriptionEdit").value;
-  var dueDate = document.getElementById("dueDateEdit").value;
-  var select = document.querySelector("#priorityEdit");
-  var priority = select.options[select.selectedIndex].value;
-
-  var formatDate = calendar.parseDate(dueDate);
-  
-}
-
 function submitNewProject(e) {
   e.preventDefault();
   let project = document.getElementById("projectInput").value;
@@ -11937,14 +11986,14 @@ function submitNewProject(e) {
 }
 
 // DOM elements and event listeners.
-var formSubmit = document.getElementById("mainSubmit");
-formSubmit.onclick = submit;
-// var editForm = document.getElementById("editSubmit");
-// editForm.onclick = editFormSubmit;
+var formSubmitBtn = document.getElementById("mainSubmit");
+formSubmitBtn.onclick = submit;
+var editFormSubmitBtn = document.getElementById("editSubmit");
+editFormSubmitBtn.onclick = handleEditSubmit;
 var cancelMain = document.getElementById("cancelMain");
 cancelMain.onclick = _display__WEBPACK_IMPORTED_MODULE_3__.closeMainForm;
-// var cancelEdit = document.getElementById("cancelEdit");
-// cancelEdit.onclick = closeEditForm;
+var cancelEdit = document.getElementById("cancelEdit");
+cancelEdit.onclick = _display__WEBPACK_IMPORTED_MODULE_3__.closeEditForm;
 let newProjectBtn = document.getElementById("newProjectSubmitBtn");
 newProjectBtn.onclick = submitNewProject;
 let openProjectForm = document.getElementById("openNewProjectFormBtn");
@@ -11960,10 +12009,6 @@ document.addEventListener(
     if (e.target.matches(".projectTab")) {
       selectedProject = e.target.childNodes[0].data;
       (0,_display__WEBPACK_IMPORTED_MODULE_3__.togglePage)(e.target);
-    }
-    if (e.target.matches(".edit")) {
-      // TODO: send task to edit form to add placeholder values
-      (0,_display__WEBPACK_IMPORTED_MODULE_3__.openEditForm)();
     }
   },
   false

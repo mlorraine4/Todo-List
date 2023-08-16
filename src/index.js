@@ -3,6 +3,7 @@ import Todo from "./ToDo";
 import "./style.css";
 import {
   addProjectButton,
+  closeEditForm,
   closeMainForm,
   displayAllProjectButtons,
   displayTask,
@@ -53,6 +54,7 @@ const App = () => {
 };
 
 let selectedProject = null;
+let selectedTask = null;
 
 App();
 
@@ -78,7 +80,67 @@ export function handleDeleteTask(e) {
   removeTaskFromDisplay(id);
 }
 
-export function handleEditTask() {}
+export function handleOpenEditForm(e) {
+  let id = e.target.parentElement.getAttribute("data-key");
+  let task = Storage.myToDoList.allTasks[id];
+  selectedTask = id;
+  openEditForm();
+  showTaskInEditForm(task);
+  console.log(task);
+}
+
+export function handleEditSubmit(e) {
+   e.preventDefault();
+   let id = selectedTask;
+   let timestamp = Storage.myToDoList.allTasks[id].timestamp;
+   var title = document.getElementById("titleEdit").value;
+   var description = document.getElementById("descriptionEdit").value;
+   var dueDate = document.getElementById("dueDateEdit").value;
+   var select = document.querySelector("#priorityEdit");
+   var priority = select.options[select.selectedIndex].value;
+
+   var formatDate = calendar.parseDate(dueDate);
+
+   let task = new Todo(
+     title,
+     description,
+     formatDate,
+     priority,
+     id,
+     selectedProject,
+     timestamp
+   );
+
+   Storage.addTask(task);
+   updateTaskDiv(task);
+   closeEditForm();
+   selectedTask = null;
+}
+
+function updateTaskDiv(task) {
+  let taskContainer;
+  let id = task.id;
+  let divs = document.querySelectorAll("[data-key]");
+  divs.forEach((div) => {
+    if (div.getAttribute("data-key") === id) {
+      taskContainer = div;
+    }
+  });
+  taskContainer.querySelector(".listName").innerHTML = task.title;
+  taskContainer.querySelector(".listDue").innerHTML = task.dueDate;
+}
+
+function showTaskInEditForm(task) {
+  let formTitle = document.getElementById('titleEdit');
+  let formDescription = document.getElementById('descriptionEdit');
+  let formDueDate = document.querySelectorAll('.form-control')[1];
+  let formPriority = document.getElementById('priorityEdit');
+
+  formTitle.value = task.title;
+  formDescription = task.description;
+  formDueDate.placeholder = task.dueDate;
+  formPriority.value = task.priority;
+}
 
 // forms functionality
 const submit = (e) => {
@@ -107,18 +169,6 @@ const submit = (e) => {
   closeMainForm();
 };
 
-function editFormSubmit(e) {
-  e.preventDefault();
-  var title = document.getElementById("titleEdit").value;
-  var description = document.getElementById("descriptionEdit").value;
-  var dueDate = document.getElementById("dueDateEdit").value;
-  var select = document.querySelector("#priorityEdit");
-  var priority = select.options[select.selectedIndex].value;
-
-  var formatDate = calendar.parseDate(dueDate);
-  
-}
-
 function submitNewProject(e) {
   e.preventDefault();
   let project = document.getElementById("projectInput").value;
@@ -129,14 +179,14 @@ function submitNewProject(e) {
 }
 
 // DOM elements and event listeners.
-var formSubmit = document.getElementById("mainSubmit");
-formSubmit.onclick = submit;
-// var editForm = document.getElementById("editSubmit");
-// editForm.onclick = editFormSubmit;
+var formSubmitBtn = document.getElementById("mainSubmit");
+formSubmitBtn.onclick = submit;
+var editFormSubmitBtn = document.getElementById("editSubmit");
+editFormSubmitBtn.onclick = handleEditSubmit;
 var cancelMain = document.getElementById("cancelMain");
 cancelMain.onclick = closeMainForm;
-// var cancelEdit = document.getElementById("cancelEdit");
-// cancelEdit.onclick = closeEditForm;
+var cancelEdit = document.getElementById("cancelEdit");
+cancelEdit.onclick = closeEditForm;
 let newProjectBtn = document.getElementById("newProjectSubmitBtn");
 newProjectBtn.onclick = submitNewProject;
 let openProjectForm = document.getElementById("openNewProjectFormBtn");
@@ -152,10 +202,6 @@ document.addEventListener(
     if (e.target.matches(".projectTab")) {
       selectedProject = e.target.childNodes[0].data;
       togglePage(e.target);
-    }
-    if (e.target.matches(".edit")) {
-      // TODO: send task to edit form to add placeholder values
-      openEditForm();
     }
   },
   false

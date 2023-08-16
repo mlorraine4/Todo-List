@@ -1,4 +1,4 @@
-import { calendar, handleDeleteProject, handleDeleteTask } from ".";
+import { calendar, handleDeleteProject, handleDeleteTask, handleOpenEditForm } from ".";
 import { Storage } from "./storage";
 
 // Tasks
@@ -31,6 +31,7 @@ export function displayTask(task) {
 
   var edit = document.createElement("div");
   edit.classList.add("edit");
+  edit.onclick = handleOpenEditForm;
   edit.innerHTML = "...";
 
   var remove = document.createElement("button");
@@ -235,7 +236,7 @@ export function togglePage(navBar) {
 
 export function displayTaskHeader() {
   let headerContainer = document.createElement("div");
-  headerContainer.classList.add("flex");
+  headerContainer.classList.add("flex-left");
 
   var nameHeader = document.createElement("div");
   nameHeader.innerHTML = "task";
@@ -272,17 +273,15 @@ let formMain = document.querySelector(".formMain");
 let editForm = document.querySelector(".editForm");
 let content = document.querySelector(".content");
 let mainFormContainer = document.getElementById("formDiv");
+let editFormContainer = document.getElementById("editFormDiv");
 
 export function openEditForm() {
-  closeMainForm();
-  editForm.style.display = "grid";
-  document.querySelector("#cancelEdit").style.display = "block";
+  editFormContainer.classList.toggle('hide');
 }
 
 export function closeEditForm() {
   editForm.reset();
-  editForm.style.display = "none";
-  document.querySelector("#cancelEdit").style.display = "none";
+  editFormContainer.classList.toggle("hide");
 }
 
 export function openMainForm() {
