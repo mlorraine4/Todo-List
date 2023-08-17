@@ -1,11 +1,16 @@
+import { calendar } from ".";
+import { myList } from "./Controller";
 import {
-  calendar,
+  handleOpenEditForm,
   handleDeleteProject,
   handleDeleteTask,
-  handleOpenEditForm,
-} from ".";
-import { myList } from "./Controller";
+} from "./HelperFunctions";
 import { Storage } from "./storage";
+import home from "./images/header/home (2).png";
+import message from "./images/header/envelope (1).png";
+import notification from "./images/header/bell (1).png";
+import profile from "./images/header/user (1).png";
+import menu from "./images/header/menu-burger.png";
 
 // Tasks
 export function displayTask(task) {
@@ -357,14 +362,6 @@ export function hideError() {
   document.querySelector("#error").style.opacity = 0;
 }
 
-export function validateForm(date) {
-  if (date.length !== 0) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
 export function showTaskInEditForm(task) {
   let formTitle = document.getElementById("titleEdit");
   let formDescription = document.getElementById("descriptionEdit");
@@ -376,3 +373,11 @@ export function showTaskInEditForm(task) {
   formDueDate.placeholder = task.dueDate;
   formPriority.value = task.priority;
 }
+
+// HEADER
+document.querySelector("#homeIcon").src = home;
+document.querySelector("#profileIcon").src = profile;
+document.querySelector("#messageIcon").src = message;
+document.querySelector("#notificationIcon").src = notification;
+document.querySelector("#menuIcon").src = menu;
+

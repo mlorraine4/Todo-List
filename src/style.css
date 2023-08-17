@@ -210,8 +210,8 @@ label {
 }
 
 .icon, .headerIcon {
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
     padding: 0 5px 0 5px;
 }
 
@@ -250,6 +250,7 @@ label {
     justify-content: center;
     align-items: center;
     height: auto;
+    padding: 5px;
 }
 .edit:hover {
     background-color: rgba(188, 193, 194, 0.4);
@@ -280,6 +281,10 @@ label {
     color: white;
 }
 
+.deleteBtn {
+    margin-left: 20px;
+}
+
 .editMainProject {
     opacity: 0;
     background-color: white;
@@ -293,4 +298,5 @@ label {
 .right {
     display: flex;
     align-items: center;
+    margin-right: 25px;
 }
