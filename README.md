@@ -1,13 +1,15 @@
 <h1 align='center'>To Do List</h1>
 <h3 align='center'>An application to help organize your life!</h3>
 
-![Preview](/)
+![Preview](/src/images/preview.png)
 
-<h2 align='center'>To Do List submission for [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-todo-list)</h2>
+## To Do List submission for [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-todo-list)
+
 <h3 align='center'>The goal for this project was to make a to do list app that has data persistence. This is my first project using Local Storage to save user data.</h3>
+
 # 👇 Live Demo 👇
 
-[Live Demo](https://mlorraine4.github.io/Todo-List/)
+[To Do List App](https://mlorraine4.github.io/Todo-List/)
 
 ## Built with
 - HTML
