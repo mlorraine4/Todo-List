@@ -1,10 +1,6 @@
 import { calendar } from ".";
 import { myList } from "./Controller";
-import {
-  handleOpenEditForm,
-  handleDeleteProject,
-  handleDeleteTask,
-} from "./HelperFunctions";
+import { handleOpenEditForm, handleDeleteProject, handleDeleteTask } from ".";
 import { Storage } from "./storage";
 import home from "./images/header/home (2).png";
 import message from "./images/header/envelope (1).png";
@@ -241,7 +237,7 @@ export function togglePage(navBar) {
     title.classList.add("navBarTitle");
     var subHead = document.createElement("div");
     subHead.classList.add("subHead");
-    title.innerHTML = projectTitle;
+    title.innerHTML = myList.project;
     subHead.innerHTML = calendar.today;
     var addBtn = document.createElement("button");
     addBtn.innerHTML = "+";
@@ -252,7 +248,7 @@ export function togglePage(navBar) {
     document.querySelector(".content").appendChild(head);
 
     displayTaskHeader();
-    displayProjectTasks(projectTitle);
+    displayProjectTasks(myList.project);
   }
 }
 
