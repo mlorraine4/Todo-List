@@ -9,43 +9,47 @@
 </head>
 <body>
     <div class="header">
-        <div class="left"><img src="./94071bc9bfa744536f38.png" class="headerIcon" class="icon" alt=""></div>
+        <div id="app-title" class="left">my to-do list</div>
         <div class="right">
-            <img src="./e3818f44ac9602343b64.png" class="headerIcon" class="icon" alt="">
-            <img src="./2c378c9ee25927123f7d.png" class="headerIcon" class="icon" alt="">
-            <button id="openMainForm" class="addBtns">+</button>
+            <img src="" class="headerIcon" id="homeIcon" class="icon" alt="">
+            <img src="" class="headerIcon" id="profileIcon" class="icon" alt="">
+            <img src="" class="headerIcon" id="messageIcon" class="icon" alt="">
+            <img src="" class="headerIcon" id="notificationIcon" class="icon" alt="">
+            <img src="" class="headerIcon" id="menuIcon" class="icon" alt="">
         </div>
     </div>
     <div class="navBar">
-        <div class="navItem">
+        <div class="flex">
+            <img src="./94071bc9bfa744536f38.png" class="icon" alt="">
+            <div id="home"  class="navItem mainNav">home</div>
+        </div>
+        <div class="flex">
             <img src="./350ff41396063ad5dafb.png" class="icon" alt="">
-            <div id="today">today</div>
+            <div id="today"  class="navItem mainNav">today</div>
         </div>
-        <div class="navItem">
+        <div class="flex">
             <img src="./4425aa0da76ded7769de.png" class="icon" alt="">
-            <div id="tomorrow">tomorrow</div>
+            <div id="tomorrow" class="navItem mainNav">tomorrow</div>
         </div>
-        <div class="navItem">
+        <div class="flex">
             <img src="./4230b24128b26c604c81.png" class="icon" alt="">
-            <div id="important">important tasks</div>
+            <div id="important" class="navItem mainNav">important tasks</div>
         </div>
         <div class="navHead">
             <div>projects</div>
-            <button id="addProject" class="addBtns">+</button>
-        </div>
-        <div class="projectTab" id="mainProject">
-            <div>main project</div>
-            <div class="editMainProject">...</div>
+            <button id="openNewProjectFormBtn" class="addBtns">+</button>
         </div>
     </div>
-    <div class="formDiv">
+    <div id="formDiv"  class="hide">
+        <button class="cancelBtn" id="cancelMain">x</button>
         <form class="formMain">
-            <input type="text" id="title" placeholder="task">
-            <input type="text" id="description" placeholder="description">
-            <input type="text" id="dueDate" placeholder="due date">
+            <div class="formTitle">Add Task</div>
+            <input class="pad" type="text" id="title" placeholder="task" required>
+            <input class="pad" type="text" id="description" placeholder="description">
+            <input class="pad" type="text" id="dueDate" placeholder="due date" required>
             <div class="priorityDiv">
-                <label for="priority">priority</label>
-                <select name = "priority" id="priority">
+                <label for="priority" class="pad">priority</label>
+                <select name = "priority" id="priority" class="pad">
                     <option value="none">none</option>
                     <option value="low">low</option>
                     <option value="high">high</option>
@@ -55,31 +59,37 @@
                 <input type="submit" value="add" id="mainSubmit">
             </div>
         </form>
-        <button class="cancelBtn" id="cancelMain">cancel</button>
     </div>
     <div class="content">
-        <div id="taskHeader" class="listName" >task</div>
-        <div id="dateHeader" class="listDue">due</div>
     </div>
-    <div class="editFormDiv">
+    <div id="editFormDiv"  class="hide">
+        <button id="cancelEdit" class="cancelBtn">x</button>
         <form class="editForm">
-            <input type="text" id="titleEdit" placeholder="edit task">
-            <input type="text" id="descriptionEdit" placeholder="description">
-            <input type="text" id="dueDateEdit" placeholder="due date">
+            <div class="formTitle">Edit Task</div>
+            <input class="pad" type="text" id="titleEdit" placeholder="edit task">
+            <input class="pad" type="text" id="descriptionEdit" placeholder="description">
+            <input class="pad" type="text" id="dueDateEdit" placeholder="due date">
             <div class="priorityDiv">
-                <label for="priorityEdit">priority</label>
-                <select name = "priority" id="priorityEdit">
+                <label for="priorityEdit" class="pad">priority</label>
+                <select name = "priority" id="priorityEdit" class="pad">
                     <option value="none">none</option>
                     <option value="low">low</option>
                     <option value="high">high</option>
                 </select>
             </div>
+            <div id="error">Please re-select a date.</div>
             <div class="formBtns">
                 <input type="submit" value="update" id="editSubmit">
-                <button type="button" id="delete">remove</button>
             </div>
         </form>
-        <button id="cancelEdit" class="cancelBtn">cancel</button>
+    </div>
+    <div id="addProjectDiv" class="hide">
+        <button id="cancelProject" class="cancelBtn">x</button>
+        <form id="projectForm">
+            <div class="formTitle">Add New Project</div>
+            <input class="pad" id="projectInput" placeholder="project name" maxlength="20" required></input>
+            <button type="submit" id="newProjectSubmitBtn">add project</button>
+        </form>
     </div>
 <script src="main.js"></script>
 </body>
